@@ -4,4 +4,7 @@
 ## メインボード
 RaspberryPiPico
 
+## 言語
+microPython
+
 ### 
