@@ -4,7 +4,7 @@
 ## メインボード
 RaspberryPiPico
 
-## 言語
-microPython
+## 開発環境
+Arduino IDE
 
 ### 
