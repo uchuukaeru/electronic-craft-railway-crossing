@@ -52,7 +52,7 @@ void setup() {
 void loop() {
   //core0で動作を操作する
   if(Serial.available()){
-    int mode=(int)Serial.read();
+    int mode=(bool)Serial.read();
     Serial.println(mode);
     ber(mode);
   }
