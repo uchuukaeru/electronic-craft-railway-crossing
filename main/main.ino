@@ -21,7 +21,7 @@ Servo myservo;
 #define SW1 14  //実行・停止ボタン
 #define SW2 15  //方向指示LED1の点滅制御
 #define SW3 16  //方向指示LED2の点滅制御
-#define SW4 17  //
+#define SW4 17  //未定
 
 //電源・動作確認用LED
 #define LED 25
@@ -31,7 +31,6 @@ bool State=0;  //本体が動作しているかどうか  0(false):停止中,1(t
 bool lb1=0; //方向指示LED1の状態 0(false):点灯しない,1(true):点灯する
 bool lb2=0; //方向指示LED2の状態 0(false):点灯しない,1(true):点灯する
 bool MState=1;  //遮断機の状態  0(false):遮断機が上がっている,1(true):遮断機が下がっている
-
 
 //core0
 void setup() {
@@ -43,7 +42,6 @@ void setup() {
   pinMode(LA_2,OUTPUT);
   pinMode(LB_1,OUTPUT);
   pinMode(LB_2,OUTPUT);
-  pinMode(STOP,INPUT);
   
   Serial.begin(115200);
   Serial.println("Hello");
@@ -54,7 +52,23 @@ void loop() {
   if(Serial.available()){
     int mode=(bool)Serial.read();
     Serial.println(mode);
-    ber(mode);
+    if(mode==0 || ,mode==1) ber(mode);
+    else if(mode==2){
+      Serial.print("SW1:");
+      Serial.println(State);
+      Serial.print("SW2:");
+      Serial.println(lb_1);
+      Serial.print("SW3:");
+      Serial.println(lb_2);
+      Serial.print("SW4:");
+      Serial.println("not defined");
+      Serial.print("MState:");
+      Serial.println(MState);
+    }else if(mode==3){
+      
+    }else if(mode==4){
+      
+    }else{;}
   }
 
 }
@@ -67,6 +81,8 @@ void setup1(){
   pinMode(SW2,INPUT);
   pinMode(SW3,INPUT);
   pinMode(SW4,INPUT);
+  
+  pinMode(STOP,INPUT);
 
   pinMode(LED,OUTPUT);
   digitalWrite(LED,HIGH);
@@ -74,7 +90,7 @@ void setup1(){
 
 void loop1(){
   //core1で制御系のスイッチ（入力）
-  if(digitalRead(SW2)==HIGH){
+  if(digitalRead(SW1)==HIGH){
     State=!State;
     delay(1000);
   }
@@ -89,15 +105,17 @@ void loop1(){
   if(digitalRead(SW4)==HIGH){
     
   }
+  if(digitalRead(STOP)==HIGH){
+    State=0;
+  }
 }
 
 
 //function
 void ber(bool mode){
   Serial.println("ber");
-  if(mode==MState){
-    ;
-  }else{
+  if(mode==MState){;}
+  else{
     MState=!MState;
     if(mode==0){//上げる
       for(int n=90;n>=0;n-10){
