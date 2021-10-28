@@ -52,14 +52,14 @@ void loop() {
   if(Serial.available()){
     int mode=(bool)Serial.read();
     Serial.println(mode);
-    if(mode==0 || ,mode==1) ber(mode);
+    if(mode==0 || mode==1) ber(mode);
     else if(mode==2){
       Serial.print("SW1:");
       Serial.println(State);
       Serial.print("SW2:");
-      Serial.println(lb_1);
+      Serial.println(lb1);
       Serial.print("SW3:");
-      Serial.println(lb_2);
+      Serial.println(lb2);
       Serial.print("SW4:");
       Serial.println("not defined");
       Serial.print("MState:");
@@ -70,7 +70,7 @@ void loop() {
       
     }else{;}
   }
-
+  
 }
 
 
